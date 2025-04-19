@@ -86,15 +86,15 @@ try:
     #4. 选择城市及时间，点击查询
     driver.find_element(By.CSS_SELECTOR, '#fromStationText').click()
     driver.find_element(By.CSS_SELECTOR, '#fromStationText').clear()
-    driver.find_element(By.CSS_SELECTOR, '#fromStationText').send_keys('北京南')
+    driver.find_element(By.CSS_SELECTOR, '#fromStationText').send_keys('北京南') # 起点
     driver.find_element(By.CSS_SELECTOR, '#fromStationText').send_keys(Keys.ENTER)
     driver.find_element(By.CSS_SELECTOR, '#toStationText').click()
     driver.find_element(By.CSS_SELECTOR, '#toStationText').clear()
-    driver.find_element(By.CSS_SELECTOR, '#toStationText').send_keys('南宁东')
+    driver.find_element(By.CSS_SELECTOR, '#toStationText').send_keys('南宁东') # 终点
     driver.find_element(By.CSS_SELECTOR, '#toStationText').send_keys(Keys.ENTER)
     driver.find_element(By.CSS_SELECTOR, '#train_date').click()
     driver.find_element(By.CSS_SELECTOR, '#train_date').clear()
-    driver.find_element(By.CSS_SELECTOR, '#train_date').send_keys('2025-05-01')
+    driver.find_element(By.CSS_SELECTOR, '#train_date').send_keys('2025-05-01') # 出发日期
     time.sleep(0.3)
     driver.find_element(By.CSS_SELECTOR, '#sf2').click()
     wait_until(target_time)# 等待到开抢时间
@@ -107,7 +107,7 @@ try:
     for attempt in range(max_attempts):
         try:
             print(f"第{attempt+1}次尝试选择车次...")
-            driver.find_element(By.CSS_SELECTOR, '#queryLeftTable tr:nth-child(1) .btn72').click() 
+            driver.find_element(By.CSS_SELECTOR, '#queryLeftTable tr:nth-child(1) .btn72').click() # 括号中的数字表示从上往下数的第1趟车，可以改成你需要的车次
             print("成功选择车次！")
             break  # 成功选择车次后跳出循环
         except Exception as e:
