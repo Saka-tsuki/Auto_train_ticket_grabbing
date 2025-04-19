@@ -13,7 +13,7 @@
 - Python 3.8+
 
 ## 安装
-（只用下载buy.py并配置环境就可以了，其他可以不用下载）
+（只用下载buy.py和account_information.txt并配置环境就可以了，其他可以不用下载）
 
 安装所需的 Python 库：
 pip install selenium==4.31.0
@@ -22,18 +22,16 @@ pip install selenium==4.31.0
    ```bash
    git clone https://github.com/yourusername/railway-ticket-booking.git
    ```
-配置
+#### 配置
 在运行程序之前，确保在根目录下的 account_information.txt 文件中提供你的账户信息。
 
 文件格式如下：
-
 username=你的用户名
 password=你的密码
 id=身份证后四位
-使用方法
-激活虚拟环境（如果有使用虚拟环境）：
 
-如果使用虚拟环境，首先激活它：
+#### 使用方法
+激活虚拟环境（如果有使用虚拟环境）：
 
 source venv/bin/activate   # 对于 Linux/Mac
 .\venv\Scripts\activate    # 对于 Windows
