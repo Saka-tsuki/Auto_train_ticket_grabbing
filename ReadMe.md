@@ -54,10 +54,6 @@ python buy.py
 目标时间：你可以在 buy.py 脚本中修改 target_time 来设置预定的开始时间。
 
 target_time = datetime.datetime(2025, 4, 17, 20, 30, 0)  # 修改这行
-常见问题
-ChromeDriver 版本：确保你的 ChromeDriver 与安装的 Chrome 版本匹配。
-
-验证码处理：脚本包含验证码处理的占位符。如果验证码无法自动处理，脚本会等待你手动输入验证码。
 
 许可证
 该项目使用 MIT 许可证 - 详情请参见 LICENSE 文件。
