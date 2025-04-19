@@ -13,13 +13,11 @@
 - Python 3.8+
 
 ## 安装
-
-1. 克隆该项目或下载文件：
+（只用下载buy.py并配置环境就可以了，其他可以不用下载）
+克隆该项目或下载文件：
    ```bash
    git clone https://github.com/yourusername/railway-ticket-booking.git
 安装所需的 Python 库：
-
-
 pip install selenium==4.31.0
 
 配置
