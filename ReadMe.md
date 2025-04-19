@@ -21,7 +21,7 @@ pip install selenium==4.31.0
 克隆该项目或下载文件：
    ```bash
    git clone https://github.com/yourusername/railway-ticket-booking.git
-
+   ```
 配置
 在运行程序之前，确保在根目录下的 account_information.txt 文件中提供你的账户信息。
 
