@@ -54,7 +54,7 @@ if not account_information or 'username' not in account_information or 'password
 # 2. 登录网站
 driver.get('https://kyfw.12306.cn/otn/resources/login.html')
 # 2.1 扫码登录
-'''
+
 try:
     driver.find_element(By.CSS_SELECTOR, '.login-hd-account').click()
 except:
@@ -75,7 +75,7 @@ verification_code = input("请查看手机收到的验证码并在此输入: ")
 driver.find_element(By.CSS_SELECTOR, '#code').send_keys(verification_code)
 # 点击确认按钮
 driver.find_element(By.CSS_SELECTOR, '#sureClick').click()
-
+'''
 # 等待网页加载
 time.sleep(1.5)
 print("已完成验证码验证，继续执行程序...")
