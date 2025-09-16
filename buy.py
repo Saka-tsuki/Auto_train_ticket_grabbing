@@ -23,7 +23,7 @@ def wait_until(target_time):
             break
         time.sleep(0.2)  # 每0.2秒检查一次
 # 设置开抢时间（假设4月17日20:30开抢）
-target_time = datetime.datetime(2025, 4, 17, 20, 30, 0)
+target_time = datetime.datetime(2025, 9, 16, 18, 10, 30)
 # 1. 打开浏览器
 from selenium.webdriver.chrome.options import Options
 chrome_options = Options()
@@ -86,17 +86,17 @@ try:
     #4. 选择城市及时间，点击查询
     driver.find_element(By.CSS_SELECTOR, '#fromStationText').click()
     driver.find_element(By.CSS_SELECTOR, '#fromStationText').clear()
-    driver.find_element(By.CSS_SELECTOR, '#fromStationText').send_keys('北京南') # 起点
+    driver.find_element(By.CSS_SELECTOR, '#fromStationText').send_keys('沈阳') # 起点
     driver.find_element(By.CSS_SELECTOR, '#fromStationText').send_keys(Keys.ENTER)
     driver.find_element(By.CSS_SELECTOR, '#toStationText').click()
     driver.find_element(By.CSS_SELECTOR, '#toStationText').clear()
-    driver.find_element(By.CSS_SELECTOR, '#toStationText').send_keys('南宁东') # 终点
+    driver.find_element(By.CSS_SELECTOR, '#toStationText').send_keys('北京') # 终点
     driver.find_element(By.CSS_SELECTOR, '#toStationText').send_keys(Keys.ENTER)
     driver.find_element(By.CSS_SELECTOR, '#train_date').click()
     driver.find_element(By.CSS_SELECTOR, '#train_date').clear()
-    driver.find_element(By.CSS_SELECTOR, '#train_date').send_keys('2025-05-01') # 出发日期
+    driver.find_element(By.CSS_SELECTOR, '#train_date').send_keys('2025-09-26') # 出发日期
     time.sleep(0.3)
-    driver.find_element(By.CSS_SELECTOR, '#sf2').click()
+    driver.find_element(By.CSS_SELECTOR, '#sf1').click()
     wait_until(target_time)# 等待到开抢时间
     time.sleep(0.2)
     driver.find_element(By.CSS_SELECTOR, '#query_ticket').click()
@@ -107,7 +107,7 @@ try:
     for attempt in range(max_attempts):
         try:
             print(f"第{attempt+1}次尝试选择车次...")
-            driver.find_element(By.CSS_SELECTOR, '#queryLeftTable tr:nth-child(1) .btn72').click() # 括号中的数字表示从上往下数的第1趟车，可以改成你需要的车次
+            driver.find_element(By.CSS_SELECTOR, '#queryLeftTable tr:nth-child(3) .btn72').click() # 括号中的数字表示从上往下数的第1趟车，可以改成你需要的车次
             print("成功选择车次！")
             break  # 成功选择车次后跳出循环
         except Exception as e:
@@ -119,34 +119,22 @@ try:
             else:
                 print("已达到最大尝试次数，请手动选择车次")
                 input("请手动选择车次，然后按回车继续...")
-    # 6. 选择乘客
+    # 6. 选择乘客和席别
     time.sleep(0.3)
     driver.find_element(By.CSS_SELECTOR, '#normalPassenger_0').click()
     time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#dialog_xsertcj_ok').click()
-    time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#normalPassenger_1').click()
-    time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#dialog_xsertcj_ok').click()
-    time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#normalPassenger_2').click()
-    time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#dialog_xsertcj_ok').click()
-    time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#normalPassenger_3').click()
-    time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#dialog_xsertcj_ok').click()
-    time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#submitOrder_id').click()
-    time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#qd_closeDefaultWarningWindowDialog_id').click()
+    driver.find_element(By.CSS_SELECTOR, '#seatType_1').click()
+    
 except:
     print("无法找到元素，请检查网页是否发生变化")
     time.sleep(100)
 # 7. 点击提交订单
 try:
     time.sleep(1.5)
+    driver.find_element(By.CSS_SELECTOR, '#submitOrder_id').click()
+    time.sleep(0.3)
     driver.find_element(By.CSS_SELECTOR, '#qr_submit_id').click()
+    
 except:
     print("无法找到元素，请检查网页是否发生变化")
     time.sleep(100)
