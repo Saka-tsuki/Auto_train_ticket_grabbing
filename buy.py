@@ -23,7 +23,7 @@ def wait_until(target_time):
             break
         time.sleep(0.2)  # 每0.2秒检查一次
 # 设置开抢时间（假设4月17日20:30开抢）
-target_time = datetime.datetime(2025, 9, 16, 18, 10, 30)
+target_time = datetime.datetime(2025, 9, 17, 21, 49, 15)
 # 1. 打开浏览器
 from selenium.webdriver.chrome.options import Options
 chrome_options = Options()
@@ -77,7 +77,7 @@ driver.find_element(By.CSS_SELECTOR, '#code').send_keys(verification_code)
 driver.find_element(By.CSS_SELECTOR, '#sureClick').click()
 '''
 # 等待网页加载
-time.sleep(1.5)
+time.sleep(0.1)
 print("已完成验证码验证，继续执行程序...")
 
 # 3. 点击车票预订，进入购票页面
@@ -95,19 +95,20 @@ try:
     driver.find_element(By.CSS_SELECTOR, '#train_date').click()
     driver.find_element(By.CSS_SELECTOR, '#train_date').clear()
     driver.find_element(By.CSS_SELECTOR, '#train_date').send_keys('2025-09-26') # 出发日期
-    time.sleep(0.3)
+    time.sleep(0.1)
     driver.find_element(By.CSS_SELECTOR, '#sf1').click()#sf1为普通票，sf2为学生票
     wait_until(target_time)# 等待到开抢时间
-    time.sleep(0.2)
+    time.sleep(0.1)
     driver.find_element(By.CSS_SELECTOR, '#query_ticket').click()
     # 5. 选择车次，点击预订
-    time.sleep(0.4)
+    time.sleep(0.1)
     # 循环尝试选择车次，直到成功
     max_attempts = 50  # 最大尝试次数
     for attempt in range(max_attempts):
         try:
             print(f"第{attempt+1}次尝试选择车次...")
-            driver.find_element(By.CSS_SELECTOR, '#queryLeftTable tr:nth-child(17) .btn72').click() # 括号中的数字表示从上往下数的第1趟车，可以改成你需要的车次
+            driver.find_element(By.CSS_SELECTOR, '#queryLeftTable tr:nth-child(17) .btn72').click()#如果你要抢的车次在n行,括号里就填2n-1
+            
             print("成功选择车次！")
             break  # 成功选择车次后跳出循环
         except Exception as e:
@@ -121,19 +122,38 @@ try:
                 input("请手动选择车次，然后按回车继续...")
     # 6. 选择乘客和席别
     time.sleep(0.3)
-    driver.find_element(By.CSS_SELECTOR, '#normalPassenger_0').click()
+    driver.find_element(By.CSS_SELECTOR, '#normalPassenger_0').click()#normalPassenger_0为显示的第一个乘车人，第二个为normalPassenger_1，以此类推
     time.sleep(0.1)
     driver.find_element(By.CSS_SELECTOR, '#seatType_1').click()
+    time.sleep(0.1)
+    driver.find_element(By.CSS_SELECTOR, '#seatType_1 [value="3"]').click()
+    # 调整value中的数字来更改座位类别（商务座(9),特等座(P),一等座(M),二等座(O),高级软卧(6),软卧(4),硬卧(3),软座(2),硬座(1),无座(1)）
+    #可以自己配置乘客和席别（注意normalPassenger和seatType相对应）
+    '''
+    time.sleep(0.1)
+    driver.find_element(By.CSS_SELECTOR, '#normalPassenger_1').click()
+    time.sleep(0.1)
+    driver.find_element(By.CSS_SELECTOR, '#seatType_2').click()
+    time.sleep(0.1)
+    driver.find_element(By.CSS_SELECTOR, '#seatType_2 [value="3"]').click()
+    '''
     
 except:
     print("无法找到元素，请检查网页是否发生变化")
     time.sleep(100)
-# 7. 点击提交订单
+
+# 7. 点击提交订单(尚未添加选座功能)
 try:
-    time.sleep(1.5)
+    time.sleep(0.1)
     driver.find_element(By.CSS_SELECTOR, '#submitOrder_id').click()
+    time.sleep(0.1)
+    driver.find_element(By.CSS_SELECTOR, '#x_no + a').click()
+    #下铺为x_no，中铺为z_no，上铺为s_no(可根据乘客数量继续添加代码)
+    
+    '''
     time.sleep(0.3)
     driver.find_element(By.CSS_SELECTOR, '#qr_submit_id').click()
+    '''
     
 except:
     print("无法找到元素，请检查网页是否发生变化")

@@ -1,3 +1,0 @@
-driver.find_element(By.CSS_SELECTOR, '#submitOrder_id').click()
-    time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#qd_closeDefaultWarningWindowDialog_id').click()
