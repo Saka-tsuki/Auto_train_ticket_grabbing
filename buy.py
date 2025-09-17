@@ -96,7 +96,7 @@ try:
     driver.find_element(By.CSS_SELECTOR, '#train_date').clear()
     driver.find_element(By.CSS_SELECTOR, '#train_date').send_keys('2025-09-26') # 出发日期
     time.sleep(0.3)
-    driver.find_element(By.CSS_SELECTOR, '#sf1').click()
+    driver.find_element(By.CSS_SELECTOR, '#sf1').click()#sf1为普通票，sf2为学生票
     wait_until(target_time)# 等待到开抢时间
     time.sleep(0.2)
     driver.find_element(By.CSS_SELECTOR, '#query_ticket').click()
@@ -107,7 +107,7 @@ try:
     for attempt in range(max_attempts):
         try:
             print(f"第{attempt+1}次尝试选择车次...")
-            driver.find_element(By.CSS_SELECTOR, '#queryLeftTable tr:nth-child(3) .btn72').click() # 括号中的数字表示从上往下数的第1趟车，可以改成你需要的车次
+            driver.find_element(By.CSS_SELECTOR, '#queryLeftTable tr:nth-child(17) .btn72').click() # 括号中的数字表示从上往下数的第1趟车，可以改成你需要的车次
             print("成功选择车次！")
             break  # 成功选择车次后跳出循环
         except Exception as e:
