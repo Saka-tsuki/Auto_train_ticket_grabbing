@@ -22,7 +22,7 @@ pip install selenium==4.31.0
    ```bash
    git clone https://github.com/yourusername/railway-ticket-booking.git
    ```
-#### 配置
+### 配置
 在运行程序之前，确保在根目录下的 account_information.txt 文件中提供你的账户信息。
 
 文件格式如下：
@@ -30,7 +30,7 @@ username=你的用户名
 password=你的密码
 id=身份证后四位
 
-#### 使用方法
+### 使用方法
 激活虚拟环境（如果有使用虚拟环境）：
 
 source venv/bin/activate   # 对于 Linux/Mac
@@ -46,16 +46,16 @@ python buy.py
 
 等待直到设定的预定时间（你可以在脚本中修改这个时间）。
 
-自动选择车次和乘客。
+自动选择车次、乘客、席别、卧铺/座位位置。
 
 完成购票过程。
 
-自定义脚本
+#### 自定义脚本
 目标时间：你可以在 buy.py 脚本中修改 target_time 来设置预定的开始时间。
 
 target_time = datetime.datetime(2025, 4, 17, 20, 30, 0)  # 修改这行
 
-许可证
+## 许可证
 该项目使用 MIT 许可证 - 详情请参见 LICENSE 文件。
 
 
