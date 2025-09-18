@@ -22,7 +22,7 @@ def wait_until(target_time):
             print(f"\n已到达指定时间，继续执行程序...")
             break
         time.sleep(0.2)  # 每0.2秒检查一次
-# 设置开抢时间（假设4月17日20:30开抢）
+# 设置开抢时间（假设9月17日21:49开抢）
 target_time = datetime.datetime(2025, 9, 17, 21, 49, 15)
 # 1. 打开浏览器
 from selenium.webdriver.chrome.options import Options
@@ -115,7 +115,7 @@ try:
             if attempt < max_attempts - 1:  # 如果不是最后一次尝试
                 print("重新查询车次...")
                 driver.find_element(By.CSS_SELECTOR, '#query_ticket').click()
-                time.sleep(0.3)  # 等待查询结果加载
+                time.sleep(0.2)  # 等待查询结果加载
             else:
                 print("已达到最大尝试次数，请手动选择车次")
                 input("请手动选择车次，然后按回车继续...")
@@ -145,10 +145,10 @@ except:
 try:
     time.sleep(0.2)
     driver.find_element(By.CSS_SELECTOR, '#submitOrder_id').click()
-    time.sleep(0.3)
+    time.sleep(0.2)
     '''driver.find_element(By.CSS_SELECTOR, '#x_no + a').click()'''#选卧(可根据乘客数量继续添加代码)
     #下铺为x_no，中铺为z_no，上铺为s_no
-    driver.find_element(By.CSS_SELECTOR, '#erdeng1 a[id="1A"]').click()#选座(可根据乘客数量继续添加代码)
+    driver.find_element(By.CSS_SELECTOR, '#erdeng1 a[id="1F"]').click()#选座(可根据乘客数量继续添加代码)
     #erdeng1为第一排二等座,1A为座位位置
     #yideng有1A,1C,1D,1F;erdeng有1A,1B,1C,1D,1F;tedeng有1A,1C,1F;shangwu有1A,1F
     time.sleep(0.2)
