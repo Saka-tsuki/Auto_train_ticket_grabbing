@@ -101,14 +101,13 @@ try:
     time.sleep(0.1)
     driver.find_element(By.CSS_SELECTOR, '#query_ticket').click()
     # 5. 选择车次，点击预订
-    time.sleep(0.1)
+    time.sleep(0.2)
     # 循环尝试选择车次，直到成功
     max_attempts = 50  # 最大尝试次数
     for attempt in range(max_attempts):
         try:
             print(f"第{attempt+1}次尝试选择车次...")
-            driver.find_element(By.CSS_SELECTOR, '#queryLeftTable tr:nth-child(17) .btn72').click()#如果你要抢的车次在n行,括号里就填2n-1
-            
+            driver.find_element(By.CSS_SELECTOR, '#queryLeftTable tr:nth-child(21) .btn72').click()#如果你要抢的车次在n行,括号里就填2n-1
             print("成功选择车次！")
             break  # 成功选择车次后跳出循环
         except Exception as e:
@@ -121,13 +120,13 @@ try:
                 print("已达到最大尝试次数，请手动选择车次")
                 input("请手动选择车次，然后按回车继续...")
     # 6. 选择乘客和席别
-    time.sleep(0.3)
+    time.sleep(0.2)
     driver.find_element(By.CSS_SELECTOR, '#normalPassenger_0').click()#normalPassenger_0为显示的第一个乘车人，第二个为normalPassenger_1，以此类推
     time.sleep(0.1)
     driver.find_element(By.CSS_SELECTOR, '#seatType_1').click()
     time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#seatType_1 [value="3"]').click()
-    # 调整value中的数字来更改座位类别（商务座(9),特等座(P),一等座(M),二等座(O),高级软卧(6),软卧(4),硬卧(3),软座(2),硬座(1),无座(1)）
+    driver.find_element(By.CSS_SELECTOR, '#seatType_1 [value="O"]').click()
+    # 调整value中的数字来更改座位类别（商务座(9),特等座(P),一等座(M),二等座(O)(字母O),高级软卧(6),软卧(4),硬卧(3),软座(2),硬座(1),无座(1)）
     #可以自己配置乘客和席别（注意normalPassenger和seatType相对应）
     '''
     time.sleep(0.1)
@@ -142,18 +141,18 @@ except:
     print("无法找到元素，请检查网页是否发生变化")
     time.sleep(100)
 
-# 7. 点击提交订单(尚未添加选座功能)
+# 7. 点击提交订单+选卧/选座
 try:
-    time.sleep(0.1)
+    time.sleep(0.2)
     driver.find_element(By.CSS_SELECTOR, '#submitOrder_id').click()
-    time.sleep(0.1)
-    driver.find_element(By.CSS_SELECTOR, '#x_no + a').click()
-    #下铺为x_no，中铺为z_no，上铺为s_no(可根据乘客数量继续添加代码)
-    
-    '''
     time.sleep(0.3)
+    '''driver.find_element(By.CSS_SELECTOR, '#x_no + a').click()'''#选卧(可根据乘客数量继续添加代码)
+    #下铺为x_no，中铺为z_no，上铺为s_no
+    driver.find_element(By.CSS_SELECTOR, '#erdeng1 a[id="1A"]').click()#选座(可根据乘客数量继续添加代码)
+    #erdeng1为第一排二等座,1A为座位位置
+    #yideng有1A,1C,1D,1F;erdeng有1A,1B,1C,1D,1F;tedeng有1A,1C,1F;shangwu有1A,1F
+    time.sleep(0.2)
     driver.find_element(By.CSS_SELECTOR, '#qr_submit_id').click()
-    '''
     
 except:
     print("无法找到元素，请检查网页是否发生变化")
