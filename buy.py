@@ -145,13 +145,13 @@ except:
 try:
     time.sleep(0.2)
     driver.find_element(By.CSS_SELECTOR, '#submitOrder_id').click()
-    time.sleep(0.2)
+    time.sleep(0.7)
     '''driver.find_element(By.CSS_SELECTOR, '#x_no + a').click()'''#选卧(可根据乘客数量继续添加代码)
     #下铺为x_no，中铺为z_no，上铺为s_no
     driver.find_element(By.CSS_SELECTOR, '#erdeng1 a[id="1F"]').click()#选座(可根据乘客数量继续添加代码)
     #erdeng1为第一排二等座,1A为座位位置
     #yideng有1A,1C,1D,1F;erdeng有1A,1B,1C,1D,1F;tedeng有1A,1C,1F;shangwu有1A,1F
-    time.sleep(0.2)
+    time.sleep(1.4)
     driver.find_element(By.CSS_SELECTOR, '#qr_submit_id').click()
     
 except:
